@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.team8.controller.TicketSubmissionController"
+            style="-fx-background-color: linear-gradient(to bottom right, #f5f8ff, #ffffff);"
+            AnchorPane.topAnchor="0"
+            AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0"
+            AnchorPane.rightAnchor="0">
+
+    <children>
+        <VBox spacing="20"
+              AnchorPane.topAnchor="20"
+              AnchorPane.leftAnchor="20"
+              AnchorPane.rightAnchor="20"
+              AnchorPane.bottomAnchor="20">
+
+            <!-- Title -->
+            <Label text="Submit Equipment Ticket"
+                   style="-fx-font-size:26; -fx-font-weight:bold; -fx-text-fill:#003366;" />
+
+            <Separator/>
+
+            <!-- Employee Information -->
+            <VBox spacing="10">
+                <Label text="Employee Information"
+                       style="-fx-font-size:16; -fx-font-weight:bold;"/>
+
+                <GridPane hgap="15" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="25"/>
+                        <ColumnConstraints percentWidth="75" hgrow="ALWAYS"/>
+                    </columnConstraints>
+
+                    <Label text="Full Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="fullNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Employee ID:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="employeeIdField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <Label text="Phone Number:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextField fx:id="phoneField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                    <Label text="Address:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    <TextField fx:id="addressField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Equipment Request -->
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+                <Label text="Equipment Request"
+                       style="-fx-font-size:16; -fx-font-weight:bold;" />
+
+                <GridPane hgap="15" vgap="10" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="25"/>
+                        <ColumnConstraints percentWidth="75" hgrow="ALWAYS"/>
+                    </columnConstraints>
+
+                    <!-- Issue Description -->
+                    <Label text="Issue Description:"
+                           GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+
+                    <TextArea fx:id="issueDescriptionArea"
+                              promptText="Describe the request details..."
+                              wrapText="true"
+                              prefRowCount="6"
+                              GridPane.rowIndex="0"
+                              GridPane.columnIndex="1"
+                              GridPane.vgrow="ALWAYS"
+                              maxWidth="Infinity"/>
+
+                    <!-- Equipment Options -->
+                    <Label text="Equipment:"
+                           GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+
+                    <ScrollPane fitToWidth="true"
+                                prefViewportHeight="150"
+                                GridPane.rowIndex="1"
+                                GridPane.columnIndex="1"
+                                VBox.vgrow="ALWAYS">
+
+                        <content>
+                            <VBox spacing="4">
+                                <padding>
+                                    <Insets top="10" right="10" bottom="10" left="10"/>
+                                </padding>
+
+                                <CheckBox fx:id="monitorCheck" text="Monitor"/>
+                                <CheckBox fx:id="laptopCheck" text="Laptop"/>
+                                <CheckBox fx:id="tabletCheck" text="Tablet"/>
+                                <CheckBox fx:id="mouseCheck" text="Mouse"/>
+                                <CheckBox fx:id="keyboardCheck" text="Keyboard"/>
+                                <CheckBox fx:id="dockingStationCheck" text="Docking Station"/>
+                                <CheckBox fx:id="webcamCheck" text="Webcam"/>
+                            </VBox>
+                        </content>
+
+                    </ScrollPane>
+
+                </GridPane>
+            </VBox>
+
+            <!-- Spacer -->
+            <Pane VBox.vgrow="ALWAYS"/>
+
+            <!-- Buttons -->
+            <HBox alignment="CENTER_RIGHT" spacing="12">
+                <Button text="Back to Dashboard"
+                        onAction="#handleBack"
+                        style="-fx-background-color:#d9534f; -fx-text-fill:white;
+                               -fx-font-weight:bold; -fx-background-radius:8;"/>
+
+                <Button fx:id="submitButton"
+                        text="Submit Ticket"
+                        onAction="#handleSubmit"
+                        style="-fx-background-color:#4CAF50; -fx-text-fill:white;
+                               -fx-font-weight:bold; -fx-background-radius:8;"/>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

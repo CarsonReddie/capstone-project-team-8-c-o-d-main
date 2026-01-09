@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.team8.controller.RetirementTicketController"
+            style="-fx-background-color: linear-gradient(to bottom right, #f5f8ff, #ffffff);"
+            AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+    <children>
+        <VBox alignment="TOP_CENTER"
+              spacing="15"
+              AnchorPane.topAnchor="10"
+              AnchorPane.bottomAnchor="10"
+              AnchorPane.leftAnchor="10"
+              AnchorPane.rightAnchor="10">
+
+            <!-- Title -->
+            <Label text="Asset Retirement Request"
+                   style="-fx-font-size:22; -fx-font-weight:bold; -fx-text-fill:#003366;" />
+
+            <!-- Form Grid -->
+            <GridPane hgap="15" vgap="12" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT" hgrow="NEVER" percentWidth="30"/>
+                    <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" percentWidth="70"/>
+                </columnConstraints>
+
+                <!-- Asset ID -->
+                <Label text="Asset ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="assetIdField"
+                           promptText="Enter Asset ID"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"
+                           maxWidth="Infinity" />
+
+                <!-- Asset Type -->
+                <Label text="Asset Type:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="assetTypeComboBox"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1"
+                          maxWidth="Infinity" />
+
+                <!-- Reason -->
+                <Label text="Reason:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextArea fx:id="reasonArea"
+                          promptText="Explain why this asset should be retired..."
+                          wrapText="true"
+                          prefRowCount="3"
+                          maxWidth="Infinity"
+                          maxHeight="Infinity"
+                          GridPane.rowIndex="2" GridPane.columnIndex="1"
+                          GridPane.vgrow="ALWAYS" />
+
+                <!-- Condition -->
+                <Label text="Condition:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <VBox spacing="5"
+                      GridPane.rowIndex="3"
+                      GridPane.columnIndex="1">
+                    <CheckBox fx:id="outOfWarrantyCheck" text="Out of Warranty"/>
+                    <CheckBox fx:id="beyondRepairCheck" text="Beyond Repair"/>
+                    <CheckBox fx:id="lostStolenCheck" text="Lost / Stolen"/>
+                </VBox>
+
+                <!-- Date -->
+                <Label text="Request Date:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="requestDatePicker"
+                            GridPane.rowIndex="4"
+                            GridPane.columnIndex="1"
+                            maxWidth="Infinity" />
+            </GridPane>
+
+            <!-- Action Buttons -->
+            <HBox spacing="10"
+                  alignment="CENTER"
+                  HBox.hgrow="ALWAYS">
+                <Button fx:id="submitButton"
+                        text="Submit Ticket"
+                        onAction="#handleSubmitTicket"
+                        style="-fx-background-color:#0078D7; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:8;"
+                        maxWidth="Infinity"/>
+                <Button fx:id="clearButton"
+                        text="Clear Form"
+                        onAction="#handleClearForm"
+                        style="-fx-background-color:#999999; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:8;"
+                        maxWidth="Infinity"/>
+            </HBox>
+
+            <!-- Status Message -->
+            <Label fx:id="statusLabel"
+                   textFill="green"
+                   wrapText="true"
+                   style="-fx-font-size:14;" />
+
+            <!-- Back Button -->
+            <HBox alignment="CENTER_RIGHT"
+                  HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets top="10" right="10" bottom="0" left="10"/>
+                </padding>
+                <Button fx:id="backButton"
+                        text="← Back to Dashboard"
+                        onAction="#handleBackToDashboard"
+                        style="-fx-background-color:#d9534f; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:8;" />
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>
